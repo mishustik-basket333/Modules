@@ -4,14 +4,14 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from users.models import User
 from users.pagination import UserPagination
 from users.permissions import IsModeratorPermission, IsTeacherPermission
-from users.serializers import UserSerializer, UserPublishedSerializer
+from users.serializers import UserSerializer, UserPublishedSerializer, UserRegistrationSerializer
 from users.services import welcome_send_telegram, welcome_send_mail
 
 
 class UsersCreateAPIView(generics.CreateAPIView):
     """ Создание пользователя"""
 
-    serializer_class = UserSerializer
+    serializer_class = UserRegistrationSerializer
     permission_classes = [AllowAny]
 
     def post(self, request, *args, **kwargs):
